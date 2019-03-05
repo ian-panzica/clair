@@ -175,6 +175,7 @@ func (u *updater) Update(datastore database.Datastore) (resp vulnsrc.UpdateRespo
 	close(advChan)
 	for i := 0; i < len(advisories); i++ {
 		vulnerabilities := <-vulnChan
+		fmt.Println(i, len(advisories))
 		resp.Vulnerabilities = append(resp.Vulnerabilities, vulnerabilities...)
 	}
 	close(vulnChan)
